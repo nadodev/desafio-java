@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Team</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<section class="login">
+    <div class="container">
+        <form action="/logar" method="post">
+            <input type="text" name="email" placeholder="digite um email">
+            <input type="password" name="password" placeholder="Password">
+            <button type="submit">Login</button>
+        </form>
+        <div>
+            <p th:if="${mensagem}">Usuário ou senha inválidos!</p>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
