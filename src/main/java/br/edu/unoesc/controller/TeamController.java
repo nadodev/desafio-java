@@ -21,6 +21,12 @@ public class TeamController {
     @Autowired
     private TeamService teamService;
 
+
+    @GetMapping("/create")
+    public String index(Model model) {
+        model.addAttribute("team", new Team());
+        return "teams/index";
+    }
     @GetMapping("/mural/{teamId}")
     public String listTeams(@PathVariable("teamId") Long teamId, Model model) {
         List<Person> teamMembers = teamService.findMembersByTeamId(teamId);
@@ -47,7 +53,7 @@ public class TeamController {
 
         model.addAttribute("team", team);
 
-        return "teams";
+        return "teams/list_teams";
     }
 
     @GetMapping("/{id}")
@@ -56,11 +62,12 @@ public class TeamController {
         return "team";
     }
 
-    @PostMapping
+    @PostMapping()
     public String createTeam(@ModelAttribute Team team) {
-        teamService.save(team);
-        return "redirect:/teams";
+
+        System.out.println("Team: " + team);
+       teamService.save(team);
+       return "redirect:/teams/mural/" + team.getId();
     }
 
-    // Additional methods for updating and deleting teams
 }
