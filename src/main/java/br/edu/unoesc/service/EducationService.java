@@ -1,6 +1,6 @@
 package br.edu.unoesc.service;
 
-import br.edu.unoesc.education.EducationRepository;
+import br.edu.unoesc.repositorio.EducationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

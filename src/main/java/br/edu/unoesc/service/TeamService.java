@@ -1,9 +1,9 @@
 package br.edu.unoesc.service;
 
-import br.edu.unoesc.person.Person;
-import br.edu.unoesc.person.PersonRepository;
-import br.edu.unoesc.team.Team;
-import br.edu.unoesc.team.TeamRepository;
+import br.edu.unoesc.models.Person;
+import br.edu.unoesc.repositorio.PersonRepository;
+import br.edu.unoesc.models.Team;
+import br.edu.unoesc.repositorio.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

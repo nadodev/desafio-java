@@ -1,6 +1,6 @@
-package br.edu.unoesc.education;
+package br.edu.unoesc.models;
 
-import br.edu.unoesc.person.Person;
+import br.edu.unoesc.models.Person;
 import jakarta.persistence.*;
 
 

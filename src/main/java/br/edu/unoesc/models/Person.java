@@ -1,7 +1,5 @@
-package br.edu.unoesc.person;
+package br.edu.unoesc.models;
 
-import br.edu.unoesc.education.Education;
-import br.edu.unoesc.team.Team;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
