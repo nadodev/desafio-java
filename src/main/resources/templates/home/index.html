@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{layout/head :: head}"></div>
+<body>
+<div th:replace="~{layout/header :: header}"></div>
+<section th:fragment="content" class="home">
+    <div class="container">
+        <h1>Welcome to the Team Mural</h1>
+        <p>Here you can create teams and add members to them.</p>
+        <p>Click on the links below to navigate through the application:</p>
+        <ul>
+            <li><a href="/teams/create">add a new team</a></li>
+            <li><a href="/persons/create"> add a new person</a></li>
+            <li><a href="/teams/list">view all teams</a></li>
+        </ul>
+    </div>
+</section>
+<div th:replace="~{layout/footer :: footer}"></div>
+</body>
+</html>

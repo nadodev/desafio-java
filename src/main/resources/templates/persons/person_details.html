@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Person Details</title>
-    <link rel="stylesheet" href="/css/education.css">
-</head>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{layout/head :: head}"></div>
 <body>
-<section>
-  <div class="education">
-      <h1>Person Details</h1>
+<div th:replace="~{layout/header :: header}"></div>
+<section th:fragment="content" class="education">
+
+  <div class="container">
+      <h1 class="title">Person Details</h1>
       <p th:text="'Name: ' + ${person.getName()}"></p>
       <p th:text="'Email: ' + ${person.getEmail()}"></p>
         <p th:text="'Phone: ' + ${person.getPhone()}"></p>
@@ -34,7 +32,9 @@
       </ul>
 
       <a th:href="@{/educations/form/{personId}(personId=${person.id})}">Add Education</a>
+      <a th:href="@{'/teams/mural/' + ${person.team.getId()}}" class="button button--secondary">Back</a>
   </div>
 </section>
+<div th:replace="~{layout/footer :: footer}"></div>
 </body>
 </html>

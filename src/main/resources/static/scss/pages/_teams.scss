@@ -1,0 +1,16 @@
+.teams {
+
+
+    padding: 20px;
+    &-content {
+      display: grid;
+        grid-template-columns: repeat(2, 320px);
+      gap: 20px;
+    }
+}
+
+.random-fact {
+  font-size: 18px;
+  color: #555;
+  margin-top: 20px;
+}

@@ -2,13 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <title th:insert="${pageTitle}">Base Layout</title>
+
 </head>
 <body>
-<div th:replace="layout/header :: header"></div>
-<div th:replace="layout/main :: main"></div>
+<header th:replace="layout/header :: header"></header>
 
-<div th:replace="layout/footer :: footer"></div>
+<nav th:replace="layout/nav :: nav"></nav>
+
+<div id="content">
+    <section th:insert="this :: content"></section>
+</div>
+
+<footer th:replace="layout/footer :: footer"></footer>
 </body>
 </html>

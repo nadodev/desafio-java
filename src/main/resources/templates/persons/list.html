@@ -1,0 +1,10 @@
+<section th:fragment="section">
+    <div class="container">
+        <h1>Welcome to the Team Mural</h1>
+        <ul>
+            <li th:each="person : ${persons}">
+                <a th:href="@{'/persons/details/' + ${person.getId()}}"><span th:text="${person.getName()}"></span></a>
+            </li>
+        </ul>
+    </div>
+</section>

@@ -21,7 +21,12 @@ public class TeamController {
     @Autowired
     private TeamService teamService;
 
-
+    @GetMapping("/list")
+    public String listTeams(Model model) {
+        List<Team> teams = teamService.findAll();
+        model.addAttribute("teams", teams);
+        return "teams/list";
+    }
     @GetMapping("/create")
     public String index(Model model) {
         model.addAttribute("team", new Team());
@@ -55,6 +60,7 @@ public class TeamController {
 
         return "teams/list_teams";
     }
+
 
     @GetMapping("/{id}")
     public String viewTeam(@PathVariable Long id, Model model) {

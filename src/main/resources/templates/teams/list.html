@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{layout/head :: head}"></div>
+<body>
+<div th:replace="~{layout/header :: header}"></div>
+<section th:fragment="content">
+    <div class="container">
+        <h1>Members:</h1>
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Departament</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="team : ${teams}">
+                <td>
+                    <a th:href="@{'/teams/mural/' + ${team.getId()}}"><span th:text="${team.getName()}"></span></a>
+                </td>
+                <td>
+                   <span th:text="${team.getDepartment()}"></span>
+                </td>
+                <td>
+                    <a th:href="@{'/teams/edit/' + ${team.getId()}}">Edit</a> |
+                    <a th:href="@{'/teams/delete/' + ${team.getId()}}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+<div th:replace="~{layout/footer :: footer}"></div>
+</body>
+</html>

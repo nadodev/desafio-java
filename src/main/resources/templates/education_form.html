@@ -1,16 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Education Form</title>
-    <link rel="stylesheet" href="/css/education.css">
-
-</head>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{layout/head :: head}"></div>
 <body>
-<section class="education-form">
+<div th:replace="~{layout/header :: header}"></div>
+<section th:fragment="content" class="home">
     <div class="container">
-        <h1>Associate Education to Person</h1>
-        <form th:action="@{/educations/associate/{personId}(personId=${personId})}" method="post">
+        <h1 class="title">Associate Education to Person</h1>
+        <form th:action="@{/educations/associate/{personId}(personId=${personId})}" method="post" class="form">
             <label for="courseName">Course Name:</label>
             <input type="text" id="courseName" name="courseName" required placeholder="Enter course name">
             <label for="courseLevel">Course Level:</label>
@@ -29,9 +25,11 @@
             <label for="institution">Institution:</label>
             <input type="text" id="institution" name="institution" required placeholder="Enter institution">
 
-            <button type="submit">Associate Education</button>
+            <button type="submit" class="button button--primary">Associate Education</button>
+            <a th:href="@{/persons/details/{personId}(personId=${personId})}" class="button button--secondary">back</a>
         </form>
     </div>
 </section>
+<div th:replace="~{layout/footer :: footer}"></div>
 </body>
 </html>

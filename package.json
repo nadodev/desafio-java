@@ -1,0 +1,11 @@
+{
+  "name": "springboot-thymeleaf-scss",
+  "version": "1.0.0",
+  "description": "Spring Boot project with Thymeleaf and SCSS",
+  "scripts": {
+    "build-css": "sass src/main/resources/static/scss:src/main/resources/static/css --no-source-map --watch"
+  },
+  "devDependencies": {
+    "sass": "^1.32.0"
+  }
+}

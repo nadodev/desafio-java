@@ -1,11 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Create Team</title>
-    <link rel="stylesheet" href="/css/styles.css">
-</head>
+<div th:replace="~{layout/head :: head}"></div>
 <body>
+<div th:replace="~{layout/header :: header}"></div>
+<section th:fragment="content" class="home">
+    <div class="container">
+       <h1 class="title">Create New Team</h1>
+       <form class="form" th:action="@{/create}" th:object="${person}" method="post">
+           <label for="name">Team Name:</label>
+           <input type="text" id="name" th:field="*{name}" placeholder="Enter team name" required/>
+           <label for="email">E-mail:</label>
+           <input type="text" id="email" th:field="*{email}" placeholder="Enter a   email" required/>
+           <label for="phone">Phone:</label>
+           <input type="text" id="phone" th:field="*{phone}" placeholder="Enter phone" required oninput="applyPhoneMask(event, phone)" maxlength="15"/>
+           <label for="birth_date">BirthDate:</label>
+           <input type="date" id="birth_date" th:field="*{birth_date}" placeholder="Enter a birthDate" required/>
+           <label for="cpf">Cpf:</label>
+           <input type="text" id="cpf" th:field="*{cpf}" placeholder="Enter CPF" required oninput="applyCpfMask(event)" maxlength="14"/>
+           <label for="team_id">Choise Team:</label>
+           <select id="team_id" th:field="*{team}" required>
+               <option value="">Select a team</option>
+               <option th:each="team : ${teams}" th:value="${team.id}" th:text="${team.getName()}"></option>
+           </select>
+           <button class="button button--primary" type="submit">Create Team</button>
+            <a class="button button--secondary" href="/teams">Back to Teams List</a>
+       </form>
+
+
+   </div>
+</section>
+<div th:replace="~{layout/footer :: footer}"></div>
+
 <script>
     function cpf(v) {
         v = v.replace(/\D/g, "")
@@ -27,52 +52,5 @@
         event.target.value = phone(event.target.value);
     }
 </script>
-<section class="person">
-   <div class="container">
-       <h1>Create New Team</h1>
-       <h1>Home</h1>
-       <a href="/logout">Logout</a>
-       <form th:action="@{/create}" th:object="${person}" method="post">
-           <div class="input-group">
-               <label for="name">Team Name:</label>
-               <input type="text" id="name" th:field="*{name}" placeholder="Enter team name" required/>
-           </div>
-           <div class="input-group">
-               <label for="email">E-mail:</label>
-               <input type="text" id="email" th:field="*{email}" placeholder="Enter a   email" required/>
-           </div>
-           <div class="input-group">
-               <label for="phone">Phone:</label>
-               <input type="text" id="phone" th:field="*{phone}" placeholder="Enter phone" required oninput="applyPhoneMask(event, phone)" maxlength="15"/>
-           </div>
-           <div class="input-group">
-               <label for="birth_date">BirthDate:</label>
-               <input type="date" id="birth_date" th:field="*{birth_date}" placeholder="Enter a birthDate" required/>
-           </div>
-
-           <div class="input-group">
-               <label for="cpf">Cpf:</label>
-               <input type="text" id="cpf" th:field="*{cpf}" placeholder="Enter CPF" required oninput="applyCpfMask(event)" maxlength="14"/>
-           </div>
-           <div class="select-group">
-               <label for="team_id">Choise Team:</label>
-               <select id="team_id" th:field="*{team}" required>
-                   <option value="">Select a team</option>
-                   <option th:each="team : ${teams}" th:value="${team.id}" th:text="${team.getName()}"></option>
-               </select>
-           </div>
-
-
-           <div class="input-group">
-               <button type="submit">Create Team</button>
-           </div>
-
-
-       </form>
-
-       <a href="/teams">Back to Teams List</a>
-   </div>
-</section>
-
 </body>
 </html>

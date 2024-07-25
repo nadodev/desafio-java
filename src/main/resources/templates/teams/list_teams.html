@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Team Mural</title>
-    <link rel="stylesheet" href="/css/styles.css">
-</head>
+<div th:replace="~{layout/head :: head}"></div>
 <body>
-<h1>Team Mural</h1>
+<div th:replace="~{layout/header :: header}"></div>
+<section th:fragment="content" class="teams">
+
 <div class="container">
-    <h2>Members:</h2>
-    <div class="cards-container">
-        <div th:each="member : ${teamMembers}" class="card">
-            <p th:text="${member.name}" class="card-name">Name</p>
-            <p th:text="${randomFact}" class="random-fact">Fact</p>
-        </div>
+    <h1 class="title">Team Mural</h1>
+    <div class="teams-content">
+            <div th:each="member : ${teamMembers}" class="card">
+                    <a th:href="@{'/persons/details/' + ${member.getId()}}">
+                        <p th:text="${member.name}" class="card-name">Name</p>
+                        <p th:text="${randomFact}" class="random-fact">Fact</p>
+                    </a>
+            </div>
     </div>
 
 </div>
+</section>
+<div th:replace="~{layout/footer :: footer}"></div>
 </body>
 </html>
