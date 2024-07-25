@@ -3,6 +3,8 @@ package br.edu.unoesc.controller;
 
 import br.edu.unoesc.models.Administrator;
 import br.edu.unoesc.repositorio.AdministradoresRepository;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,26 +17,12 @@ public class LoginController {
     @Autowired
     private AdministradoresRepository adminRepo;
 
-    @GetMapping("/entrar")
-    public String index(Model model) {
-        model.addAttribute("titulo", "Login");
+    @GetMapping("/login")
+    public String login() {
         return "login/index";
     }
 
 
-    @PostMapping("/logar")
-    public String logar(Model model, Administrator adminParams) {
-        System.out.println(adminParams.getEmail());
-        System.out.println(adminParams.getPassword());
 
-        Administrator admin = this.adminRepo.Login(adminParams.getEmail(), adminParams.getPassword());
 
-        if (admin != null) {
-            return "redirect:/administrators";
-        } else {
-            model.addAttribute("mensagem", "Usuário ou senha inválidos");
-            return "login/index";
-        }
-
-    }
 }
