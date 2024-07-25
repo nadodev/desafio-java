@@ -3,23 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Person Details</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/education.css">
 </head>
 <body>
-<h1>Person Details</h1>
-<p th:text="'Name: ' + ${person.name}"></p>
-<p th:text="'Email: ' + ${person.email}"></p>
+<section>
+  <div class="education">
+      <h1>Person Details</h1>
+      <p th:text="'Name: ' + ${person.getName()}"></p>
+      <p th:text="'Email: ' + ${person.getEmail()}"></p>
+        <p th:text="'Phone: ' + ${person.getPhone()}"></p>
+        <p th:text="'Birth Date: ' + ${person.getBirth_date()}"></p>
+        <p th:text="'CPF: ' + ${person.getCpf()}"></p>
 
-<h2>Educations</h2>
-<ul>
-    <li th:each="education : ${person.getEducation()}">
-        <p th:text="'Course Name: ' + ${education.courseName}"></p>
-        <p th:text="'Course Level: ' + ${education.courseLevel}"></p>
-        <p th:text="'Completion Date: ' + ${education.completionDate}"></p>
-        <p th:text="'Institution: ' + ${education.institution}"></p>
-    </li>
-</ul>
+        <h2>Teams</h2>
+        <ul>
+            <li th:each="team : ${person.getTeam()}">
+                <p th:text="'Team Name: ' + ${person.team.getName()}"></p>
+                <p th:text="'Departament Name: ' + ${person.team.getDepartment()}"></p>
+            </li>
+        </ul>
 
-<a th:href="@{/educations/form/{personId}(personId=${person.id})}">Add Education</a>
+      <h2>Educations</h2>
+      <ul>
+          <li th:each="education : ${person.getEducation()}">
+              <p th:text="'Course Name: ' + ${education.courseName}"></p>
+              <p th:text="'Course Level: ' + ${education.courseLevel}"></p>
+              <p th:text="'Completion Date: ' + ${education.completionDate}"></p>
+              <p th:text="'Institution: ' + ${education.institution}"></p>
+          </li>
+      </ul>
+
+      <a th:href="@{/educations/form/{personId}(personId=${person.id})}">Add Education</a>
+  </div>
+</section>
 </body>
 </html>

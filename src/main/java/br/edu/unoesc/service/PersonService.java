@@ -3,6 +3,7 @@ package br.edu.unoesc.service;
 import br.edu.unoesc.models.Person;
 import br.edu.unoesc.repositorio.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,7 +28,7 @@ public class PersonService {
 
     //get by id
     public Person findById(Long id) {
-        return personRepository.findById(id).orElse(null);
+        return (Person) personRepository.findById(id).orElse(null);
     }
 
 }
