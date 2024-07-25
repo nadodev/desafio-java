@@ -39,7 +39,7 @@ public class SecurityConfig {
                 .formLogin(form -> form
                         .loginPage("/login")
                         .permitAll()
-                        .successHandler(successHandler()) // Adiciona o success handler aqui
+                        .successHandler(successHandler())
                 )
                 .logout(LogoutConfigurer::permitAll);
 
@@ -49,7 +49,7 @@ public class SecurityConfig {
     @Bean
     public AuthenticationSuccessHandler successHandler() {
         SimpleUrlAuthenticationSuccessHandler handler = new SimpleUrlAuthenticationSuccessHandler();
-        handler.setDefaultTargetUrl("/home"); // Página de redirecionamento após login bem-sucedido
+        handler.setDefaultTargetUrl("/home");
         handler.setAlwaysUseDefaultTargetUrl(true);
         return handler;
     }
