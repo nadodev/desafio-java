@@ -4,6 +4,8 @@ import br.edu.unoesc.models.Person;
 import br.edu.unoesc.repositorio.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -22,5 +24,10 @@ public class PersonService {
         personRepository.save(person);
     }
 
-    // Methods for creating, updating, deleting, and finding People
+
+    //get by id
+    public Person findById(Long id) {
+        return personRepository.findById(id).orElse(null);
+    }
+
 }

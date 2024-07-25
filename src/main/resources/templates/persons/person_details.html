@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Person Details</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>Person Details</h1>
+<p th:text="'Name: ' + ${person.name}"></p>
+<p th:text="'Email: ' + ${person.email}"></p>
+
+<h2>Educations</h2>
+<ul>
+    <li th:each="education : ${person.getEducation()}">
+        <p th:text="'Course Name: ' + ${education.courseName}"></p>
+        <p th:text="'Course Level: ' + ${education.courseLevel}"></p>
+        <p th:text="'Completion Date: ' + ${education.completionDate}"></p>
+        <p th:text="'Institution: ' + ${education.institution}"></p>
+    </li>
+</ul>
+
+<a th:href="@{/educations/form/{personId}(personId=${person.id})}">Add Education</a>
+</body>
+</html>

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -33,5 +34,11 @@ public class PersonController {
     public String create(Person person) {
         personService.save(person);
         return  "redirect:/teams/mural/" + person.getTeam().getId();
+    }
+
+    @GetMapping("/persons/details/{teamId}")
+    public String details(@PathVariable("teamId") Long teamId, Model model) {
+        model.addAttribute("person", personService.findById(teamId));
+        return "persons/person_details";
     }
 }

@@ -18,18 +18,23 @@ public class Person {
     @Setter
     @Getter
     private String name;
+
     @Setter
     @Getter
     private String cpf;
+
     @Setter
     @Getter
     private String birth_date;
+
     @Setter
     @Getter
     private String gender;
+
     @Setter
     @Getter
     private String phone;
+
     @Setter
     @Getter
     private String email;
@@ -41,6 +46,8 @@ public class Person {
     private Team team;
 
 
+    @Getter
+    @Setter
     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Education> education;
 

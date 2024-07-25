@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Education Form</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>Associate Education to Person</h1>
+<form th:action="@{/educations/associate/{personId}(personId=${personId})}" method="post">
+    <label for="courseName">Course Name:</label>
+    <input type="text" id="courseName" name="courseName" required>
+
+    <label for="courseLevel">Course Level:</label>
+    <input type="text" id="courseLevel" name="courseLevel" required>
+
+    <label for="completionDate">Completion Date:</label>
+    <input type="date" id="completionDate" name="completionDate" required>
+
+    <label for="institution">Institution:</label>
+    <input type="text" id="institution" name="institution" required>
+
+    <button type="submit">Associate Education</button>
+</form>
+</body>
+</html>

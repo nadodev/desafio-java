@@ -22,6 +22,8 @@ public class Team {
     @Setter
     private String department;
 
+    @Getter
+    @Setter
     @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Person> person;
 
