@@ -9,8 +9,28 @@ Você terá que desenvolver uma aplicação web responsável por registrar pesso
 
 ### ESCOPO DO DESAFIO
 
+**oque falta**
+- [x] Cadastro de time
+- [x] Cadastro de pessoa
+- [x] Cadastro de formação
+- [x] Consultar os cadastros
+- [x] mascara de CPF e telefone
+- [x] Proteção por login
+- [x] Mural dos times
+- [x] Fatos aleatórios
+- [ ] Editar os cadastros
+- [ ] Excluir os cadastros
+- [ ] validação  de CPF e telefone
+- [ ] validação de email
+- [ ] Gênero deve ser uma lista com valores pré-definidos;
+- [ ] Um nível de curso se refere ao grau de instrução dele: ensino médio, técnico, bacharelado, especialização
+- [ ] cada pessoa  pode estar inserida em somente um time.
+- [ ] fato aleatorio deve ser diferente para cada pessoa
+- [ ] estilizar as paginas
+
+
 **Requisitos**
-- O cadastro de time deve conter: Nome e Setor.
+- O cadastro de time deve conter: Nome e Setor. 
 - O cadastro de pessoa deve conter Nome, CPF, data de nascimento, gênero, telefone e e-mail.
   - CPF e telefone deve possuir validação e máscara;
   - O e-mail precisa ser um e-mail válido;
