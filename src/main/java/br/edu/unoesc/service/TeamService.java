@@ -1,5 +1,7 @@
 package br.edu.unoesc.service;
 
+import br.edu.unoesc.person.Person;
+import br.edu.unoesc.person.PersonRepository;
 import br.edu.unoesc.team.Team;
 import br.edu.unoesc.team.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +14,8 @@ public class TeamService {
     @Autowired
     private TeamRepository teamRepository;
 
-
-    // Methods for creating, updating, deleting, and finding Teams
+    @Autowired
+    private PersonRepository personRepository;
 
     public List<Team> findAll() {
         return teamRepository.findAll();
@@ -27,9 +29,6 @@ public class TeamService {
         teamRepository.save(team);
     }
 
-
-    // Additional methods for updating and deleting teams
-
     public void deleteById(Long id) {
         teamRepository.deleteById(id);
     }
@@ -37,6 +36,8 @@ public class TeamService {
     public void update(Team team) {
         teamRepository.save(team);
     }
-
+    public List<Person> findMembersByTeamId(Long teamId) {
+        return personRepository.findByTeamId(teamId);
+    }
 
 }
