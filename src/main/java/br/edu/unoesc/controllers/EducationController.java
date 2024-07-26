@@ -3,12 +3,15 @@ package br.edu.unoesc.controllers;
 
 import br.edu.unoesc.entities.Education;
 import br.edu.unoesc.entities.Person;
+import br.edu.unoesc.enums.EducationLevel;
 import br.edu.unoesc.services.EducationService;
 import br.edu.unoesc.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
 
 @Controller
 @RequestMapping("/educations")
@@ -24,6 +27,7 @@ public class EducationController {
     @GetMapping("/form/{personId}")
     public String showEducationForm(@PathVariable Long personId, Model model) {
         model.addAttribute("personId", personId);
+        model.addAttribute("educationLevels", Arrays.asList(EducationLevel.values()));
         return "education_form";
     }
 
@@ -35,6 +39,8 @@ public class EducationController {
 
         if (person != null) {
             education.setPerson(person);
+
+
             educationService.save(education);
             return "redirect:/persons/details/" + person.getId();
         } else {

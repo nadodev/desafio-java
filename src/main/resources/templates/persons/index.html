@@ -16,7 +16,12 @@
            <input type="text" id="phone" th:field="*{phone}" placeholder="Enter phone" required oninput="applyPhoneMask(event, phone)" maxlength="15"/>
            <label for="birth_date">BirthDate:</label>
            <input type="date" id="birth_date" th:field="*{birth_date}" placeholder="Enter a birthDate" required/>
-           <label for="cpf">Cpf:</label>
+            <label for="gender">Gênero:</label>
+            <select id="gender" th:field="*{gender}" required>
+                <option value="">Selecione um gênero</option>
+                <option th:each="gender : ${genders}" th:value="${gender.name()}" th:text="${gender.displayName}"></option>
+            </select>
+            <label for="cpf">Cpf:</label>
            <input type="text" id="cpf" th:field="*{cpf}" placeholder="Enter CPF" required oninput="applyCpfMask(event)" maxlength="14"/>
            <label for="team_id">Choise Team:</label>
            <select id="team_id" th:field="*{team}" required>

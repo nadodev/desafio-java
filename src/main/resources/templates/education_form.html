@@ -9,15 +9,11 @@
         <form th:action="@{/educations/associate/{personId}(personId=${personId})}" method="post" class="form">
             <label for="courseName">Course Name:</label>
             <input type="text" id="courseName" name="courseName" required placeholder="Enter course name">
-            <label for="courseLevel">Course Level:</label>
-           <select id="courseLevel" name="courseLevel" required>
-               <option value="">  select a level</option>
-               <option value="BACHELOR">high school</option>
-               <option value="MASTER">technical</option>
-               <option value="DOCTORATE">bachelor's degree</option>
-               <option value="DOCTORATE">specialization</option>
-               <option value="DOCTORATE">master's degree</option>
-          </select>
+            <label for="courseLevel">Education Level:</label>
+            <select id="courseLevel" th:field="*{educationLevels}" required>
+                <option value="">Selecione um nível</option>
+                <option th:each="educationLevel : ${educationLevels}" th:value="${educationLevel.name()}" th:text="${educationLevel.displayName}"></option>
+            </select>
 
             <label for="completionDate">Completion Date:</label>
             <input type="date" id="completionDate" name="completionDate" required placeholder="Enter completion date">

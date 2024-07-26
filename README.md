@@ -24,10 +24,11 @@ color: main.$ColorMain;
 - [x] Mural dos times
 - [x] Fatos aleatórios
 - [x] fato aleatorio deve ser diferente para cada pessoa
+- [x] validação  de CPF e telefone
+- [x] validação de email
 - [ ] Editar os cadastros
 - [ ] Excluir os cadastros
-- [ ] validação  de CPF e telefone
-- [ ] validação de email
+
 - [ ] Gênero deve ser uma lista com valores pré-definidos;
 - [ ] Um nível de curso se refere ao grau de instrução dele: ensino médio, técnico, bacharelado, especialização
 - [ ] cada pessoa  pode estar inserida em somente um time.

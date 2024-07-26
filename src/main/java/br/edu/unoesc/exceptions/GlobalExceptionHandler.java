@@ -13,6 +13,6 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.CONFLICT)
     public String handleDuplicateResourceException(DuplicateResourceException ex, Model model) {
         model.addAttribute("errorMessage", ex.getMessage());
-        return "person/form"; // nome do template da página de cadastro
+        return "persons/index";
     }
 }

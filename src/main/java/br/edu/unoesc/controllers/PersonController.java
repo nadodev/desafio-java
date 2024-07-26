@@ -3,6 +3,7 @@ package br.edu.unoesc.controllers;
 
 import br.edu.unoesc.entities.Person;
 import br.edu.unoesc.entities.Team;
+import br.edu.unoesc.enums.Gender;
 import br.edu.unoesc.exceptions.DuplicateResourceException;
 import br.edu.unoesc.services.PersonService;
 import br.edu.unoesc.services.TeamService;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -35,21 +37,28 @@ public class PersonController {
     public String index(Model model) {
         List<Team> teams = teamService.findAll();
         model.addAttribute("person", new Person());
+        model.addAttribute("genders", Arrays.asList(Gender.values()));
         model.addAttribute("teams", teams);
         return "persons/index";
     }
 
     @PostMapping("/persons/save")
     public String savePerson(@Valid @ModelAttribute("person") Person person, BindingResult result, Model model) {
+
         if (result.hasErrors()) {
             return "persons/index";
         }
         try {
+
             personService.save(person);
             return "redirect:/persons/success";
         } catch (DuplicateResourceException e) {
+            List<Team> teams = teamService.findAll();
             model.addAttribute("errorMessage", e.getMessage());
             model.addAttribute("person", person);
+            model.addAttribute("teams", teams);
+            model.addAttribute("genders", Arrays.asList(Gender.values()));
+
             return "persons/index";
         }
     }
