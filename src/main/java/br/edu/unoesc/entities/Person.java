@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity(name = "Person")
@@ -26,8 +27,9 @@ public class Person {
     private Team team;
 
 
+
     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Education> education;
+    private Set<Education> education = new HashSet<>();
 
 
     public Person() {

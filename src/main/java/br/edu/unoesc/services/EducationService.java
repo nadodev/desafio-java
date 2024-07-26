@@ -18,4 +18,12 @@ public class EducationService {
     public void deleteById(Long id) {
         educationRepository.deleteById(id);
     }
+
+    public Education findByPersonId(Long id) {
+        return educationRepository.findByPersonId(id);
+    }
+
+    public Education findById(Long id) {
+        return educationRepository.findById(id).orElse(null);
+    }
 }

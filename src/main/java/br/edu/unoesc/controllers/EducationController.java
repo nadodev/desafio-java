@@ -42,7 +42,7 @@ public class EducationController {
 
 
             educationService.save(education);
-            return "redirect:/persons/details/" + person.getId();
+            return "redirect:/persons/edit/" + person.getId();
         } else {
             throw new RuntimeException("Person not found");
         }

@@ -1,10 +1,12 @@
 package br.edu.unoesc.controllers;
 
 
+import br.edu.unoesc.entities.Education;
 import br.edu.unoesc.entities.Person;
 import br.edu.unoesc.entities.Team;
 import br.edu.unoesc.enums.Gender;
 import br.edu.unoesc.exceptions.DuplicateResourceException;
+import br.edu.unoesc.services.EducationService;
 import br.edu.unoesc.services.PersonService;
 import br.edu.unoesc.services.TeamService;
 import jakarta.validation.Valid;
@@ -28,12 +30,11 @@ public class PersonController {
     @Autowired
     private TeamService teamService;
 
+    @Autowired
+    private EducationService educationService;
 
-    @GetMapping("/persons/list")
-    public String list(Model model) {
-        model.addAttribute("persons", personService.findAll());
-        return "persons/list";
-    }
+
+
     @GetMapping("/persons/create")
     public String index(Model model) {
         List<Team> teams = teamService.findAll();
@@ -82,5 +83,55 @@ public class PersonController {
             redirectAttributes.addFlashAttribute("error", "Error deleting team.");
         }
         return "redirect:/persons/list";
+    }
+
+    @GetMapping("/persons/list")
+    public String listPerson(Model model) {
+        model.addAttribute("persons", personService.findAll());
+        return "persons/list";
+    }
+
+    @GetMapping("/persons/edit/{id}")
+    public String editPerson(@PathVariable("id") Long id, Model model) {
+        Person person = personService.findById(id);
+        List<Team> teams = teamService.findAll();
+        Education education = educationService.findByPersonId(id);
+        model.addAttribute("person", person);
+        model.addAttribute("teams", teams);
+        model.addAttribute("educations", education);
+
+        return "persons/edit";
+    }
+
+    @PostMapping("/persons/update/{id}")
+    public void updatePerson(Long personId, Person updatedPerson) {
+        Person existingPerson = personService.findById(personId);
+
+        if (existingPerson == null) {
+            throw new RuntimeException("Person not found");
+        }
+
+
+        existingPerson.setCpf(updatedPerson.getCpf());
+        existingPerson.setEmail(updatedPerson.getEmail());
+
+        // Atualiza a coleção de educações
+        existingPerson.getEducation().clear();
+        existingPerson.getEducation().addAll(updatedPerson.getEducation());
+
+        personService.save(existingPerson);
+    }
+    @PostMapping("/persons/removeEducation/{id}")
+    public String deleteEducation(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
+
+        Education education = educationService.findById(id);
+        Person person = personService.findById(education.getPerson().getId());
+        try {
+            educationService.deleteById(education.getId());
+            redirectAttributes.addFlashAttribute("message", "Team deleted successfully!");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", "Error deleting team.");
+        }
+        return "redirect:/persons/edit/" + person.getId();
     }
 }
