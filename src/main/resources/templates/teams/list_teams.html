@@ -10,8 +10,8 @@
     <div class="teams-content">
             <div th:each="member : ${teamMembers}" class="card">
                     <a th:href="@{'/persons/details/' + ${member.key.getId()}}">
-                        <p th:text="${member.key.name}" class="card-name">Name</p>
-                        <p>Fact: <span th:text="${member.value}"></span></p>
+                        <p th:text="${member.key.getName()}" class="card-name">Name</p>
+                        <p>Fact: <span th:text="${member.getValue()}"></span></p>
                     </a>
             </div>
     </div>

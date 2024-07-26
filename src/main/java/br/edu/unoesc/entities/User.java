@@ -1,4 +1,4 @@
-package br.edu.unoesc.models;
+package br.edu.unoesc.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,8 +13,6 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-
     @Setter
     private String username;
     @Setter

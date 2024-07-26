@@ -1,12 +1,9 @@
-package br.edu.unoesc.service;
+package br.edu.unoesc.services;
 
-import br.edu.unoesc.models.Person;
-import br.edu.unoesc.repositorio.PersonRepository;
+import br.edu.unoesc.entities.Person;
+import br.edu.unoesc.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -15,18 +12,14 @@ public class PersonService {
     @Autowired
     private PersonRepository personRepository;
 
-    //get all
     public List<Person> findAll() {
         return personRepository.findAll();
     }
 
-    //save
     public void save(Person person) {
         personRepository.save(person);
     }
 
-
-    //get by id
     public Person findById(Long id) {
         return (Person) personRepository.findById(id).orElse(null);
     }

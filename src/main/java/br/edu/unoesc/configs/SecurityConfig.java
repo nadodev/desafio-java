@@ -1,6 +1,6 @@
-package br.edu.unoesc.config;
+package br.edu.unoesc.configs;
 
-import br.edu.unoesc.service.CustomUserDetailsService;
+import br.edu.unoesc.services.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

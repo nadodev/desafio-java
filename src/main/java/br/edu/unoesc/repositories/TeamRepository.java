@@ -1,6 +1,6 @@
-package br.edu.unoesc.repositorio;
+package br.edu.unoesc.repositories;
 
-import br.edu.unoesc.models.Team;
+import br.edu.unoesc.entities.Team;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TeamRepository extends JpaRepository<Team, Long> {

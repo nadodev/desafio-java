@@ -1,15 +1,13 @@
-package br.edu.unoesc.controller;
+package br.edu.unoesc.controllers;
 
-import br.edu.unoesc.models.Person;
-import br.edu.unoesc.service.FactService;
-import br.edu.unoesc.service.TeamService;
-import br.edu.unoesc.models.Team;
+import br.edu.unoesc.entities.Person;
+import br.edu.unoesc.services.FactService;
+import br.edu.unoesc.services.TeamService;
+import br.edu.unoesc.entities.Team;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
 import java.util.List;
@@ -64,7 +62,6 @@ public class TeamController {
     @PostMapping()
     public String createTeam(@ModelAttribute Team team) {
 
-        System.out.println("Team: " + team);
        teamService.save(team);
        return "redirect:/teams/mural/" + team.getId();
     }

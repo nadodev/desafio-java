@@ -1,4 +1,4 @@
-package br.edu.unoesc.config;
+package br.edu.unoesc.configs;
 
 import java.io.IOException;
 import java.io.OutputStream;

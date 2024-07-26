@@ -1,6 +1,5 @@
-package br.edu.unoesc.models;
+package br.edu.unoesc.entities;
 
-import br.edu.unoesc.models.Person;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,9 +25,5 @@ public class Team {
     @Setter
     @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Person> person;
-
-
-
-    // Getters and Setters
 
 }

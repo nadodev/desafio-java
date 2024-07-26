@@ -1,7 +1,6 @@
-package br.edu.unoesc.repositorio;
+package br.edu.unoesc.repositories;
 
-import br.edu.unoesc.models.Education;
-import br.edu.unoesc.models.Person;
+import br.edu.unoesc.entities.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

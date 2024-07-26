@@ -1,10 +1,9 @@
-package br.edu.unoesc.service;
+package br.edu.unoesc.services;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.HashMap;
 import java.util.Map;
 
 @Service
@@ -27,6 +26,6 @@ public class FactService {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "Unable to fetch fact"; // Mensagem de fallback
+        return "Unable to fetch fact";
     }
 }

@@ -1,9 +1,9 @@
-package br.edu.unoesc.service;
+package br.edu.unoesc.services;
 
-import br.edu.unoesc.models.Person;
-import br.edu.unoesc.repositorio.PersonRepository;
-import br.edu.unoesc.models.Team;
-import br.edu.unoesc.repositorio.TeamRepository;
+import br.edu.unoesc.entities.Person;
+import br.edu.unoesc.repositories.PersonRepository;
+import br.edu.unoesc.entities.Team;
+import br.edu.unoesc.repositories.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,13 +29,6 @@ public class TeamService {
         teamRepository.save(team);
     }
 
-    public void deleteById(Long id) {
-        teamRepository.deleteById(id);
-    }
-
-    public void update(Team team) {
-        teamRepository.save(team);
-    }
     public List<Person> findMembersByTeamId(Long teamId) {
         return personRepository.findByTeamId(teamId);
     }

@@ -1,9 +1,9 @@
-package br.edu.unoesc.controller;
+package br.edu.unoesc.controllers;
 
 
-import br.edu.unoesc.models.Person;
-import br.edu.unoesc.service.PersonService;
-import br.edu.unoesc.service.TeamService;
+import br.edu.unoesc.entities.Person;
+import br.edu.unoesc.services.PersonService;
+import br.edu.unoesc.services.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

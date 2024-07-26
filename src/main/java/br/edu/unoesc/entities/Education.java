@@ -1,6 +1,5 @@
-package br.edu.unoesc.models;
+package br.edu.unoesc.entities;
 
-import br.edu.unoesc.models.Person;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

@@ -1,10 +1,10 @@
-package br.edu.unoesc.controller;
+package br.edu.unoesc.controllers;
 
 
-import br.edu.unoesc.models.Education;
-import br.edu.unoesc.models.Person;
-import br.edu.unoesc.service.EducationService;
-import br.edu.unoesc.service.PersonService;
+import br.edu.unoesc.entities.Education;
+import br.edu.unoesc.entities.Person;
+import br.edu.unoesc.services.EducationService;
+import br.edu.unoesc.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

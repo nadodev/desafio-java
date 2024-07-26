@@ -1,7 +1,7 @@
-package br.edu.unoesc.service;
+package br.edu.unoesc.services;
 
-import br.edu.unoesc.models.User;
-import br.edu.unoesc.repositorio.UserRepository;
+import br.edu.unoesc.entities.User;
+import br.edu.unoesc.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

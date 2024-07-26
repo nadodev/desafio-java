@@ -1,4 +1,4 @@
-package br.edu.unoesc.models;
+package br.edu.unoesc.entities;
 
 
 import jakarta.persistence.*;

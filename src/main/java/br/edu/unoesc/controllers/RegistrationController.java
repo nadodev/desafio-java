@@ -1,7 +1,7 @@
-package br.edu.unoesc.controller;
+package br.edu.unoesc.controllers;
 
-import br.edu.unoesc.models.User;
-import br.edu.unoesc.service.UserService;
+import br.edu.unoesc.entities.User;
+import br.edu.unoesc.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

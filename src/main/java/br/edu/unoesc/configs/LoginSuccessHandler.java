@@ -1,4 +1,4 @@
-package br.edu.unoesc.config;
+package br.edu.unoesc.configs;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
