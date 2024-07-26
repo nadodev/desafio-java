@@ -9,6 +9,11 @@ Você terá que desenvolver uma aplicação web responsável por registrar pesso
 
 ### ESCOPO DO DESAFIO
 
+@use '../1-base/main.scss';
+@use '../1-base/reset.scss';
+
+color: main.$ColorMain;
+
 **oque falta**
 - [x] Cadastro de time
 - [x] Cadastro de pessoa

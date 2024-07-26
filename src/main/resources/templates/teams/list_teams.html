@@ -9,9 +9,9 @@
     <h1 class="title">Team Mural</h1>
     <div class="teams-content">
             <div th:each="member : ${teamMembers}" class="card">
-                    <a th:href="@{'/persons/details/' + ${member.getId()}}">
-                        <p th:text="${member.name}" class="card-name">Name</p>
-                        <p th:text="${randomFact}" class="random-fact">Fact</p>
+                    <a th:href="@{'/persons/details/' + ${member.key.getId()}}">
+                        <p th:text="${member.key.name}" class="card-name">Name</p>
+                        <p>Fact: <span th:text="${member.value}"></span></p>
                     </a>
             </div>
     </div>
