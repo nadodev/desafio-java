@@ -23,6 +23,7 @@ color: main.$ColorMain;
 - [x] Proteção por login
 - [x] Mural dos times
 - [x] Fatos aleatórios
+- [x] fato aleatorio deve ser diferente para cada pessoa
 - [ ] Editar os cadastros
 - [ ] Excluir os cadastros
 - [ ] validação  de CPF e telefone
@@ -30,7 +31,7 @@ color: main.$ColorMain;
 - [ ] Gênero deve ser uma lista com valores pré-definidos;
 - [ ] Um nível de curso se refere ao grau de instrução dele: ensino médio, técnico, bacharelado, especialização
 - [ ] cada pessoa  pode estar inserida em somente um time.
-- [ ] fato aleatorio deve ser diferente para cada pessoa
+
 - [ ] estilizar as paginas
 
 

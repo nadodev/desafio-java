@@ -6,7 +6,8 @@
 <section th:fragment="content" class="home">
     <div class="container">
        <h1 class="title">Create New Team</h1>
-       <form class="form" th:action="@{/create}" th:object="${person}" method="post">
+        <form th:action="@{/persons/save}" th:object="${person}" method="post" class="form">
+           <div th:if="${errorMessage}" th:text="${errorMessage}" style="color: red;"></div>
            <label for="name">Team Name:</label>
            <input type="text" id="name" th:field="*{name}" placeholder="Enter team name" required/>
            <label for="email">E-mail:</label>

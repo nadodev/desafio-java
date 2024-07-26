@@ -13,4 +13,7 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
     @Query("SELECT e FROM Education e WHERE e.person.id = :personId")
     List<Person> findByPersonId(Long personId);
 
+    boolean existsByCpf(String cpf);
+    boolean existsByEmail(String email);
+
 }

@@ -2,15 +2,18 @@ package br.edu.unoesc.controllers;
 
 
 import br.edu.unoesc.entities.Person;
+import br.edu.unoesc.entities.Team;
+import br.edu.unoesc.exceptions.DuplicateResourceException;
 import br.edu.unoesc.services.PersonService;
 import br.edu.unoesc.services.TeamService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping
@@ -30,15 +33,25 @@ public class PersonController {
     }
     @GetMapping("/persons/create")
     public String index(Model model) {
+        List<Team> teams = teamService.findAll();
         model.addAttribute("person", new Person());
-        model.addAttribute("teams", teamService.findAll());
+        model.addAttribute("teams", teams);
         return "persons/index";
     }
 
-    @PostMapping("/create")
-    public String create(Person person) {
-        personService.save(person);
-        return  "redirect:/teams/mural/" + person.getTeam().getId();
+    @PostMapping("/persons/save")
+    public String savePerson(@Valid @ModelAttribute("person") Person person, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "persons/index";
+        }
+        try {
+            personService.save(person);
+            return "redirect:/persons/success";
+        } catch (DuplicateResourceException e) {
+            model.addAttribute("errorMessage", e.getMessage());
+            model.addAttribute("person", person);
+            return "persons/index";
+        }
     }
 
     @GetMapping("/persons/details/{teamId}")

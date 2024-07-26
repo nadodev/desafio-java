@@ -8,22 +8,18 @@ import java.util.Set;
 
 @Entity(name = "Team")
 @Table(name = "team")
+@Getter
+@Setter
 public class Team {
     @Id
-    @Getter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Getter
-    @Setter
     private String name;
-    @Getter
-    @Setter
     private String department;
 
-    @Getter
-    @Setter
     @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Person> person;
+
 
 }
