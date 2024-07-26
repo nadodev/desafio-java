@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title th:insert="${pageTitle}">Base Layout</title>
+    <title th:insert="${pageTitle}">Desafio Técnico</title>
 
 </head>
 <body>
@@ -13,7 +13,5 @@
 <div id="content">
     <section th:insert="this :: content"></section>
 </div>
-
-<footer th:replace="layout/footer :: footer"></footer>
 </body>
 </html>

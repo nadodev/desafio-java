@@ -33,4 +33,8 @@ public class TeamService {
         return personRepository.findByTeamId(teamId);
     }
 
+    public void deleteById(Long id) {
+        teamRepository.deleteById(id);
+    }
+
 }

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Arrays;
 import java.util.List;
@@ -51,7 +52,7 @@ public class PersonController {
         try {
 
             personService.save(person);
-            return "redirect:/persons/success";
+            return "redirect:/teams/mural/" + person.getTeam().getId();
         } catch (DuplicateResourceException e) {
             List<Team> teams = teamService.findAll();
             model.addAttribute("errorMessage", e.getMessage());
@@ -67,5 +68,18 @@ public class PersonController {
     public String details(@PathVariable("teamId") Long teamId, Model model) {
         model.addAttribute("person", personService.findById(teamId));
         return "persons/person_details";
+    }
+
+    @PostMapping("/persons/delete/{id}")
+    public String deleteTeam(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
+
+        Team team = personService.findById(id).getTeam();
+        try {
+            personService.deleteById(id);
+            redirectAttributes.addFlashAttribute("message", "Team deleted successfully!");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", "Error deleting team.");
+        }
+        return "redirect:/teams/mural/" +  team.getId();
     }
 }

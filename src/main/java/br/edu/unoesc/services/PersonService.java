@@ -33,4 +33,8 @@ public class PersonService {
         return (Person) personRepository.findById(id).orElse(null);
     }
 
+    public void deleteById(Long id) {
+        personRepository.deleteById(id);
+    }
+
 }

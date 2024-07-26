@@ -32,9 +32,12 @@
       </ul>
 
       <a th:href="@{/educations/form/{personId}(personId=${person.id})}">Add Education</a>
+      <form th:action="@{'/persons/delete/' + ${person.id}}" method="post" onsubmit="return confirm('Are you sure you want to delete this team?');">
+          <input type="hidden" name="_method" value="delete"/>
+          <button type="submit">Delete</button>
+      </form>
       <a th:href="@{'/teams/mural/' + ${person.team.getId()}}" class="button button--secondary">Back</a>
   </div>
 </section>
-<div th:replace="~{layout/footer :: footer}"></div>
 </body>
 </html>

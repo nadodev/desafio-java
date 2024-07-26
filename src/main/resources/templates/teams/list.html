@@ -24,13 +24,15 @@
                 </td>
                 <td>
                     <a th:href="@{'/teams/edit/' + ${team.getId()}}">Edit</a> |
-                    <a th:href="@{'/teams/delete/' + ${team.getId()}}">Delete</a>
+                    <form th:action="@{'/teams/delete/' + ${team.id}}" method="post" onsubmit="return confirm('Are you sure you want to delete this team?');">
+                        <input type="hidden" name="_method" value="delete"/>
+                        <button type="submit">Delete</button>
+                    </form>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
 </section>
-<div th:replace="~{layout/footer :: footer}"></div>
 </body>
 </html>
