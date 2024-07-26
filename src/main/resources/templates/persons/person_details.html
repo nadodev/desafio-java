@@ -12,6 +12,7 @@
         <p th:text="'Phone: ' + ${person.getPhone()}"></p>
         <p th:text="'Birth Date: ' + ${person.getBirth_date()}"></p>
         <p th:text="'CPF: ' + ${person.getCpf()}"></p>
+        <p th:text="'Gender: ' + ${person.getGender()}"></p>
 
         <h2>Teams</h2>
         <ul>
@@ -25,18 +26,14 @@
       <ul>
           <li th:each="education : ${person.getEducation()}">
               <p th:text="'Course Name: ' + ${education.courseName}"></p>
-              <p th:text="'Course Level: ' + ${education.courseLevel}"></p>
+              <p th:text="'Course Level: ' + ${education.getCourse_level()}"></p>
               <p th:text="'Completion Date: ' + ${education.completionDate}"></p>
               <p th:text="'Institution: ' + ${education.institution}"></p>
           </li>
       </ul>
 
       <a th:href="@{/educations/form/{personId}(personId=${person.id})}">Add Education</a>
-      <form th:action="@{'/persons/delete/' + ${person.id}}" method="post" onsubmit="return confirm('Are you sure you want to delete this team?');">
-          <input type="hidden" name="_method" value="delete"/>
-          <button type="submit">Delete</button>
-      </form>
-      <a th:href="@{'/teams/mural/' + ${person.team.getId()}}" class="button button--secondary">Back</a>
+      <a th:href="@{'/persons/list'}" class="button button--secondary">Back</a>
   </div>
 </section>
 </body>

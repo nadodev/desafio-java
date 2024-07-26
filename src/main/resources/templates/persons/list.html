@@ -1,10 +1,26 @@
-<section th:fragment="section">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{layout/head :: head}"></div>
+<body>
+<div th:replace="~{layout/header :: header}"></div>
+<section th:fragment="content" class="person">
+
     <div class="container">
-        <h1>Welcome to the Team Mural</h1>
-        <ul>
-            <li th:each="person : ${persons}">
-                <a th:href="@{'/persons/details/' + ${person.getId()}}"><span th:text="${person.getName()}"></span></a>
+        <h1 class="title">Welcome to the Person List</h1>
+        <ul class="person__list">
+            <li th:each="person : ${persons}" class="person__item">
+                <p th:text="'Name: ' + ${person.getName()}"></p>
+                <div>
+                    <a th:href="@{'/persons/details/' + ${person.id}}" class="button button--primary">ver</a>
+                    <a th:href="@{'/persons/details/' + ${person.id}}" class="button button--secondary">editar</a>
+                    <form th:action="@{'/persons/delete/' + ${person.id}}" method="post" onsubmit="return confirm('Are you sure you want to delete this team?');">
+                        <input type="hidden" name="_method" value="delete" />
+                        <button type="submit" class="button button--danger">Delete</button>
+                    </form>
+                </div>
             </li>
         </ul>
     </div>
 </section>
+</body>
+</html>

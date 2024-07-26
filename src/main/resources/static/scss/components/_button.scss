@@ -1,5 +1,4 @@
 .button {
-    margin-top: 15px;
     padding: 10px 20px;
     font-size: 16px;
     color: #fff;
@@ -18,5 +17,9 @@
         &:hover {
           background-color: #3d3d3d;
         }
+    }
+
+    &--danger {
+      background-color: #dc3545;
     }
 }

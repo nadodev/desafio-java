@@ -52,7 +52,8 @@ public class PersonController {
         try {
 
             personService.save(person);
-            return "redirect:/teams/mural/" + person.getTeam().getId();
+            return "redirect:/persons/list";
+
         } catch (DuplicateResourceException e) {
             List<Team> teams = teamService.findAll();
             model.addAttribute("errorMessage", e.getMessage());
@@ -80,6 +81,6 @@ public class PersonController {
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("error", "Error deleting team.");
         }
-        return "redirect:/teams/mural/" +  team.getId();
+        return "redirect:/persons/list";
     }
 }

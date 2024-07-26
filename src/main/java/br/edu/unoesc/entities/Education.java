@@ -1,5 +1,6 @@
 package br.edu.unoesc.entities;
 
+import br.edu.unoesc.enums.EducationLevel;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,7 +19,7 @@ public class Education {
 
     @Getter
     @Setter
-    private String courseLevel;
+    private String course_level;
 
     @Getter
     @Setter
