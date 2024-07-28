@@ -41,7 +41,13 @@ public class SecurityConfig {
                         .permitAll()
                         .successHandler(successHandler())
                 )
-                .logout(LogoutConfigurer::permitAll);
+                .logout(logout ->
+                        logout
+                                .logoutUrl("/logout") // URL de logout configurada corretamente
+                                .logoutSuccessUrl("/login?logout") // Redireciona após logout
+                                .invalidateHttpSession(true)
+                                .deleteCookies("JSESSIONID")
+                );
 
         return http.build();
     }
