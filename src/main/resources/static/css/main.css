@@ -32,6 +32,14 @@ a:hover {
   text-decoration: none;
 }
 
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
 .button {
   padding: 10px 20px;
   font-size: 16px;

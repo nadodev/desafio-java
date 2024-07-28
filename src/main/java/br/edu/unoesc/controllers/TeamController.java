@@ -34,7 +34,7 @@ public class TeamController {
     @GetMapping("/create")
     public String index(Model model) {
         model.addAttribute("team", new Team());
-        return "create";
+        return "teams/create";
     }
     @GetMapping("/mural/{teamId}")
     public String mural(@PathVariable("teamId") Long teamId, Model model) {

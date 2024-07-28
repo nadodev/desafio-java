@@ -8,7 +8,7 @@
 <div class="container">
     <h1 class="title">Team Mural</h1>
     <div class="teams-content">
-            <div th:each="member : ${teamMembers}" class="card">
+            <div th:each="member : ${teamMembers}" class="card card--yellow">
                     <a th:href="@{'/persons/details/' + ${member.key.getId()}}">
                         <p th:text="${member.key.getName()}" class="card-name">Name</p>
                         <p>Fact: <span th:text="${member.getValue()}"></span></p>

@@ -1,9 +1,9 @@
 package br.edu.unoesc.enums;
 
 public enum Gender {
-    MALE("Masculino"),
-    FEMALE("Feminino"),
-    OTHER("Outro");
+    MALE("Male"),
+    FEMALE("Feminine"),
+    OTHER("Others");
 
     private final String displayName;
 

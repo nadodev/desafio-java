@@ -5,31 +5,31 @@
 <div th:replace="~{layout/header :: header}"></div>
 <section th:fragment="content" class="home">
     <div class="container">
-       <h1 class="title">Create New Team</h1>
+       <h1 class="title">Create New Person</h1>
         <form th:action="@{/persons/save}" th:object="${person}" method="post" class="form">
            <div th:if="${errorMessage}" th:text="${errorMessage}" style="color: red;"></div>
            <label for="name">Team Name:</label>
            <input type="text" id="name" th:field="*{name}" placeholder="Enter team name" required/>
            <label for="email">E-mail:</label>
-           <input type="text" id="email" th:field="*{email}" placeholder="Enter a   email" required/>
+           <input type="text" id="email" th:field="*{email}" placeholder="Enter a email" required/>
            <label for="phone">Phone:</label>
            <input type="text" id="phone" th:field="*{phone}" placeholder="Enter phone" required oninput="applyPhoneMask(event, phone)" maxlength="15"/>
            <label for="birth_date">BirthDate:</label>
            <input type="date" id="birth_date" th:field="*{birth_date}" placeholder="Enter a birthDate" required/>
             <label for="gender">Gênero:</label>
             <select id="gender" th:field="*{gender}" required>
-                <option value="">Selecione um gênero</option>
+                <option value="">Select a genre</option>
                 <option th:each="gender : ${genders}" th:value="${gender.name()}" th:text="${gender.displayName}"></option>
             </select>
             <label for="cpf">Cpf:</label>
-           <input type="text" id="cpf" th:field="*{cpf}" placeholder="Enter CPF" required oninput="applyCpfMask(event)" maxlength="14"/>
+           <input type="text" id="cpf" th:field="*{cpf}" placeholder="Enter a CPF" required oninput="applyCpfMask(event)" maxlength="14"/>
            <label for="team_id">Choise Team:</label>
            <select id="team_id" th:field="*{team}" required>
                <option value="">Select a team</option>
                <option th:each="team : ${teams}" th:value="${team.id}" th:text="${team.getName()}"></option>
            </select>
            <button class="button button--primary" type="submit">Create Team</button>
-            <a class="button button--secondary" href="/teams">Back to Teams List</a>
+            <a class="button button--secondary mt-10" href="/teams">Back to Teams List</a>
        </form>
 
 
