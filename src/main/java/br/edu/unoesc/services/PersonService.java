@@ -28,13 +28,15 @@ public class PersonService {
 
     @Transactional
     public void save(Person person) {
-        // Verifica se o CPF está em uso por outra pessoa
+
         Person personWithCpf = personRepository.findByCpf(person.getCpf());
+
+        System.out.println(personWithCpf);
         if (personWithCpf != null && !personWithCpf.getId().equals(person.getId())) {
             throw new DuplicateResourceException("CPF já existe: " + person.getCpf());
         }
 
-        // Verifica se o e-mail está em uso por outra pessoa
+
         Person personWithEmail = personRepository.findByEmail(person.getEmail());
         if (personWithEmail != null && !personWithEmail.getId().equals(person.getId())) {
             throw new DuplicateResourceException("E-mail já existe: " + person.getEmail());

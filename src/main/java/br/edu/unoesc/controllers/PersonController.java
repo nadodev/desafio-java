@@ -80,7 +80,7 @@ public class PersonController {
             personService.deleteById(id);
             redirectAttributes.addFlashAttribute("message", "Team deleted successfully!");
         } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("error", "Error deleting team.");
+           redirectAttributes.addFlashAttribute("error",  "Error deleting team.");
         }
         return "redirect:/persons/list";
     }
@@ -103,24 +103,67 @@ public class PersonController {
         return "persons/edit";
     }
 
+
     @PostMapping("/persons/update/{id}")
-    public void updatePerson(Long personId, Person updatedPerson) {
+    public String updatePerson(
+            @PathVariable("id") Long personId,
+            @ModelAttribute @Valid Person updatedPerson,
+            BindingResult result,
+            RedirectAttributes redirectAttributes,
+            Model model) {
+
+        if (result.hasErrors()) {
+            model.addAttribute("person", updatedPerson);
+            model.addAttribute("teams", teamService.findAll());
+            model.addAttribute("genders", Arrays.asList(Gender.values()));
+            model.addAttribute("educations", educationService.findByPersonId(personId));
+            return "persons/edit";
+        }
+
         Person existingPerson = personService.findById(personId);
 
         if (existingPerson == null) {
-            throw new RuntimeException("Person not found");
+            redirectAttributes.addFlashAttribute("error", "Person not found.");
+            return "redirect:/persons/list";
         }
 
+        try {
+            boolean existingCpf = personService.isCpfInUseByAnotherPerson(updatedPerson.getCpf(), updatedPerson.getId());
+            boolean existingEmail = personService.isEmailInUseByAnotherPerson(updatedPerson.getEmail(), updatedPerson.getId());
 
-        existingPerson.setCpf(updatedPerson.getCpf());
-        existingPerson.setEmail(updatedPerson.getEmail());
+            if (existingCpf) {
+                throw new DuplicateResourceException("CPF já existe: " + updatedPerson.getCpf());
+            }
 
-        // Atualiza a coleção de educações
-        existingPerson.getEducation().clear();
-        existingPerson.getEducation().addAll(updatedPerson.getEducation());
+            if (existingEmail) {
+                throw new DuplicateResourceException("Email já existe: " + updatedPerson.getEmail());
+            }
 
-        personService.save(existingPerson);
+            existingPerson.setName(updatedPerson.getName());
+            existingPerson.setCpf(updatedPerson.getCpf());
+            existingPerson.setEmail(updatedPerson.getEmail());
+            existingPerson.setPhone(updatedPerson.getPhone());
+            existingPerson.setBirth_date(updatedPerson.getBirth_date());
+            existingPerson.setTeam(updatedPerson.getTeam());
+
+            existingPerson.getEducation().clear();
+            existingPerson.getEducation().addAll(updatedPerson.getEducation());
+
+            personService.save(existingPerson);
+            redirectAttributes.addFlashAttribute("message", "Person updated successfully!");
+            return "redirect:/persons/list";
+        } catch (DuplicateResourceException e) {
+            model.addAttribute("errorMessage", e.getMessage());
+            model.addAttribute("person", updatedPerson);
+            model.addAttribute("teams", teamService.findAll());
+            model.addAttribute("genders", Arrays.asList(Gender.values()));
+            model.addAttribute("educations", educationService.findByPersonId(personId));
+            return "persons/edit";
+        }
     }
+
+
+
     @PostMapping("/persons/removeEducation/{id}")
     public String deleteEducation(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
 

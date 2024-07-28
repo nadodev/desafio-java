@@ -34,7 +34,7 @@ public class TeamController {
     @GetMapping("/create")
     public String index(Model model) {
         model.addAttribute("team", new Team());
-        return "teams/index";
+        return "create";
     }
     @GetMapping("/mural/{teamId}")
     public String mural(@PathVariable("teamId") Long teamId, Model model) {
@@ -74,6 +74,27 @@ public class TeamController {
             redirectAttributes.addFlashAttribute("message", "Team deleted successfully!");
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("error", "Error deleting team.");
+        }
+        return "redirect:/teams/list";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String showEditForm(@PathVariable("id") Long id, Model model) {
+        Team team = teamService.findById(id);
+        model.addAttribute("team", team);
+        return "teams/edit";
+    }
+
+    @PostMapping("/update/{id}")
+    public String updateTeam(@PathVariable("id") Long id, @ModelAttribute Team team, RedirectAttributes redirectAttributes) {
+        Team existingTeam = teamService.findById(id);
+        if (existingTeam != null) {
+            existingTeam.setName(team.getName());
+            existingTeam.setDepartment(team.getDepartment());
+            teamService.save(existingTeam);
+            redirectAttributes.addFlashAttribute("message", "Team updated successfully!");
+        } else {
+            redirectAttributes.addFlashAttribute("error", "Error updating team.");
         }
         return "redirect:/teams/list";
     }

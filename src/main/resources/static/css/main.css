@@ -368,6 +368,18 @@ tr:nth-child(even) {
   grid-template-columns: repeat(2, 320px);
   gap: 20px;
 }
+.teams__footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+.teams__footer-full {
+  width: 100%;
+}
+.teams__content {
+  margin-top: 30px;
+}
 
 .random-fact {
   font-size: 18px;

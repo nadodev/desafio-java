@@ -26,14 +26,14 @@ color: main.$ColorMain;
 - [x] fato aleatorio deve ser diferente para cada pessoa
 - [x] validação  de CPF e telefone
 - [x] validação de email
-- [ ] Editar os cadastros
-- [ ] Excluir os cadastros
+- [x] Editar os cadastros
+- [x] Excluir os cadastros
 
-- [ ] Gênero deve ser uma lista com valores pré-definidos;
-- [ ] Um nível de curso se refere ao grau de instrução dele: ensino médio, técnico, bacharelado, especialização
-- [ ] cada pessoa  pode estar inserida em somente um time.
+- [x] Gênero deve ser uma lista com valores pré-definidos;
+- [x] Um nível de curso se refere ao grau de instrução dele: ensino médio, técnico, bacharelado, especialização
+- [x] cada pessoa  pode estar inserida em somente um time.
 
-- [ ] estilizar as paginas
+- [x] estilizar as paginas
 
 
 **Requisitos**

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{layout/head :: head}"></div>
+<body>
+<div th:replace="~{layout/header :: header}"></div>
+<section th:fragment="content" class="teams">
+<div class="container">
+    <h1 class="title">Create New Team</h1>
+    <form th:action="@{/teams/update/{id}(id=${team.id})}" th:object="${team}" method="post" class="form">
+        <label for="name">Team Name:</label>
+        <input type="text" id="name" th:field="*{name}" placeholder="Enter team name" required/>
+        <label for="department">Department:</label>
+        <input type="text" id="department" th:field="*{department}" placeholder="Enter department" required/>
+        <button class="button button--primary" type="submit">Update Team</button>
+        <a class="button button--secondary" href="/teams/list">Back to Teams List</a>
+    </form>
+</div>
+</section>
+</body>
+</html>
