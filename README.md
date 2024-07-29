@@ -14,7 +14,7 @@ Você terá que desenvolver uma aplicação web responsável por registrar pesso
 
 color: main.$ColorMain;
 
-**oque falta**
+**oque foi feito**
 - [x] Cadastro de time
 - [x] Cadastro de pessoa
 - [x] Cadastro de formação
