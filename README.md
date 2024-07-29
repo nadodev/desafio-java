@@ -80,7 +80,7 @@ Para auxiliar no entendimento, elaboramos um diagrama de Entidade-Relacionamento
 
 **Não esqueça de documentar o processo necessário para rodar a aplicação.**
 
-### AVALIAÇÃO
+### Rodar o projeto
 Fazer o clone e após isso, configurar o banco de dados
 
 ```bash
