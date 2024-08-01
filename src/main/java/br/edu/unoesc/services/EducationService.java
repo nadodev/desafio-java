@@ -5,6 +5,8 @@ import br.edu.unoesc.repositories.EducationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EducationService {
 
@@ -19,7 +21,7 @@ public class EducationService {
         educationRepository.deleteById(id);
     }
 
-    public Education findByPersonId(Long id) {
+    public List<Education> findByPersonId(Long id) {
         return educationRepository.findByPersonId(id);
     }
 

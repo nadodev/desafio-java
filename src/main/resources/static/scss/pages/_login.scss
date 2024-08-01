@@ -4,6 +4,13 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+
+  .error {
+    color: red;
+    text-align: center;
+    margin-top: 20px;
+
+  }
 }
 .login form {
   padding: 20px;

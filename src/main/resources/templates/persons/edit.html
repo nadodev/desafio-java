@@ -41,9 +41,9 @@
             <div th:if="${educations != null}">
                 <div th:each="education : ${educations}" class="teams__footer">
                     <select name="educationLevelNames" required class="teams__footer-full">
-                        <option th:value="${education}" th:text="${educations.getCourseName()}" selected></option>
+                        <option th:value="${education}" th:text="${education.getCourseName()}" selected></option>
                     </select>
-                    <form class="form" th:action="@{'/persons/removeEducation/' + ${educations.getId()}}" method="post" onsubmit="return confirm('Are you sure you want to delete this team?');">
+                    <form class="form" th:action="@{'/persons/removeEducation/' + ${education.getId()}}" method="post" onsubmit="return confirm('Are you sure you want to delete this team?');">
                         <input type="hidden" name="_method" value="delete" />
                         <button type="submit" class="button button--danger">Delete</button>
                     </form>

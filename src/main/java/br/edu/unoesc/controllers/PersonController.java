@@ -95,10 +95,10 @@ public class PersonController {
     public String editPerson(@PathVariable("id") Long id, Model model) {
         Person person = personService.findById(id);
         List<Team> teams = teamService.findAll();
-        Education education = educationService.findByPersonId(id);
+        List<Education> educationList = educationService.findByPersonId(id);
         model.addAttribute("person", person);
         model.addAttribute("teams", teams);
-        model.addAttribute("educations", education);
+        model.addAttribute("educations", educationList);
 
         return "persons/edit";
     }
