@@ -14,7 +14,7 @@ Você terá que desenvolver uma aplicação web responsável por registrar pesso
 
 color: main.$ColorMain;
 
-**oque falta**
+**oque foi feito**
 - [x] Cadastro de time
 - [x] Cadastro de pessoa
 - [x] Cadastro de formação
@@ -79,3 +79,15 @@ Para auxiliar no entendimento, elaboramos um diagrama de Entidade-Relacionamento
 - Sentido e coerência nas respostas aos questionamentos na entrevista de apresentação do desafio realizada pelo candidato.
 
 **Não esqueça de documentar o processo necessário para rodar a aplicação.**
+
+### Rodar o projeto
+Fazer o clone e após isso, configurar o banco de dados
+
+```bash
+spring.datasource.url=jdbc:mysql://localhost:3306/unoesc?useSSL=false
+spring.datasource.username=root
+spring.datasource.password=1234
+```
+
+e Rodar o projeto.
+
